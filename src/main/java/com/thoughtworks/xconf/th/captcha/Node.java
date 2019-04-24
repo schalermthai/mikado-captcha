@@ -1,12 +1,9 @@
-package th.agilethailand.thoughtworks.captcha;
+package com.thoughtworks.xconf.th.captcha;
 
-/**
- * Created by schalermthai on 05/05/2015.
- */
 public class Node {
 
-    private String operator;
-    private Integer value;
+    private String operator = "#";
+    private Integer value = 0;
 
     private Node leftOperand;
     private Node rightOperand;
@@ -15,13 +12,9 @@ public class Node {
         this.operator = operator;
         this.leftOperand = leftOperand;
         this.rightOperand = rightOperand;
-        this.value = 0;
     }
 
     public Node(Integer value) {
-        this.operator = "#";
-        this.leftOperand = null;
-        this.rightOperand = null;
         this.value = value;
     }
 
@@ -30,16 +23,18 @@ public class Node {
             case "+" : return leftOperand.compute() + rightOperand.compute();
             case "-" : return leftOperand.compute() - rightOperand.compute();
             case "*" : return leftOperand.compute() * rightOperand.compute();
-            default  : return this.value;
+            case "#" : return this.value;
+            default  : throw new UnsupportedOperationException();
         }
     }
 
-    public String toString() {
+    public String display() {
         switch (this.operator) {
-            case "+" : return leftOperand.toString() + " + " + rightOperand.toString();
-            case "-" : return leftOperand.toString() + " - " + rightOperand.toString();
-            case "*" : return leftOperand.toString() + " * " + rightOperand.toString();
-            default  : return this.value + "";
+            case "+" : return leftOperand.display() + " + " + rightOperand.display();
+            case "-" : return leftOperand.display() + " - " + rightOperand.display();
+            case "*" : return leftOperand.display() + " * " + rightOperand.display();
+            case "#" : return this.value + "";
+            default  : throw new UnsupportedOperationException();
         }
     }
 
