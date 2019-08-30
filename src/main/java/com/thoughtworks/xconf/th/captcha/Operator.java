@@ -1,6 +1,6 @@
 package com.thoughtworks.xconf.th.captcha;
 
-public class Operator {
+public abstract class Operator {
     private final String symbol;
 
     public Operator(String symbol) {
@@ -8,20 +8,37 @@ public class Operator {
     }
 
     public static Operator plus() {
-        return new Operator("+");
+        return new Operator("+") {
+            @Override
+            Integer compute(Node leftOperand, Node rightOperand) {
+                return leftOperand.compute() + rightOperand.compute();
+            }
+        };
     }
 
     public static Operator minus() {
-        return new Operator("-");
+        return new Operator("-") {
+            @Override
+            Integer compute(Node leftOperand, Node rightOperand) {
+                return leftOperand.compute() - rightOperand.compute();
+            }
+        };
     }
 
     public static Operator multiply() {
-        return new Operator("*");
+        return new Operator("*") {
+            @Override
+            Integer compute(Node leftOperand, Node rightOperand) {
+                return leftOperand.compute() * rightOperand.compute();
+            }
+        };
     }
 
     public String getSymbol() {
         return symbol;
     }
+
+    abstract Integer compute(Node leftOperand, Node rightOperand);
 
     public String display(Node leftOperand, Node rightOperand) {
         return leftOperand.display() + " " + symbol + " " + rightOperand.display();
