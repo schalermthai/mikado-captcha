@@ -13,8 +13,8 @@ public class OpNode implements Node {
         this.rightOperand = rightOperand;
     }
 
-    public static Node createOpNode(String operator, Node leftOperand, Node rightOperand) {
-        return new OpNode(operator, leftOperand, rightOperand);
+    public static Node createOpNode(Operator operator1, Node leftOperand, Node rightOperand) {
+        return new OpNode(operator1.getSymbol(), leftOperand, rightOperand);
     }
 
     public static Node createValueNode(Integer value) {
