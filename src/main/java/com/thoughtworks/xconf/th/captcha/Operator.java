@@ -29,36 +29,4 @@ public abstract class Operator {
         return leftOperand.display() + " " + symbol + " " + rightOperand.display();
     }
 
-    private static class Plus extends Operator {
-        public Plus() {
-            super("+");
-        }
-
-        @Override
-        Integer compute(Node leftOperand, Node rightOperand) {
-            return leftOperand.compute() + rightOperand.compute();
-        }
-    }
-
-    private static class Minus extends Operator {
-        public Minus() {
-            super("-");
-        }
-
-        @Override
-        Integer compute(Node leftOperand, Node rightOperand) {
-            return leftOperand.compute() - rightOperand.compute();
-        }
-    }
-
-    private static class Multiply extends Operator {
-        public Multiply() {
-            super("*");
-        }
-
-        @Override
-        Integer compute(Node leftOperand, Node rightOperand) {
-            return leftOperand.compute() * rightOperand.compute();
-        }
-    }
 }
