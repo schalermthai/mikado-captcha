@@ -8,14 +8,22 @@ public class Node {
     private Node leftOperand;
     private Node rightOperand;
 
-    public Node(String operator, Node leftOperand, Node rightOperand) {
+    private Node(String operator, Node leftOperand, Node rightOperand) {
         this.operator = operator;
         this.leftOperand = leftOperand;
         this.rightOperand = rightOperand;
     }
 
-    public Node(Integer value) {
+    private Node(Integer value) {
         this.value = value;
+    }
+
+    public static Node createOpNode(String operator, Node leftOperand, Node rightOperand) {
+        return new Node(operator, leftOperand, rightOperand);
+    }
+
+    public static Node createValueNode(Integer value) {
+        return new Node(value);
     }
 
     public Integer compute() {
