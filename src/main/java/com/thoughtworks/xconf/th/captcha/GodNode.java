@@ -2,19 +2,16 @@ package com.thoughtworks.xconf.th.captcha;
 
 public class GodNode extends ValueNode implements Node {
 
-    private String operator = "#";
+    private String operator;
 
     private Node leftOperand;
     private Node rightOperand;
 
     private GodNode(String operator, Node leftOperand, Node rightOperand) {
+        super(0);
         this.operator = operator;
         this.leftOperand = leftOperand;
         this.rightOperand = rightOperand;
-    }
-
-    private GodNode(Integer value) {
-        this.value = value;
     }
 
     public static Node createOpNode(String operator, Node leftOperand, Node rightOperand) {
@@ -22,7 +19,7 @@ public class GodNode extends ValueNode implements Node {
     }
 
     public static Node createValueNode(Integer value) {
-        return new GodNode(value);
+        return new ValueNode(value);
     }
 
     @Override
@@ -31,7 +28,6 @@ public class GodNode extends ValueNode implements Node {
             case "+" : return leftOperand.compute() + rightOperand.compute();
             case "-" : return leftOperand.compute() - rightOperand.compute();
             case "*" : return leftOperand.compute() * rightOperand.compute();
-            case "#" : return this.value;
             default  : throw new UnsupportedOperationException();
         }
     }
@@ -42,7 +38,6 @@ public class GodNode extends ValueNode implements Node {
             case "+" : return leftOperand.display() + " + " + rightOperand.display();
             case "-" : return leftOperand.display() + " - " + rightOperand.display();
             case "*" : return leftOperand.display() + " * " + rightOperand.display();
-            case "#" : return this.value + "";
             default  : throw new UnsupportedOperationException();
         }
     }
