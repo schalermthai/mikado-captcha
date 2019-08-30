@@ -8,30 +8,15 @@ public abstract class Operator {
     }
 
     public static Operator plus() {
-        return new Operator("+") {
-            @Override
-            Integer compute(Node leftOperand, Node rightOperand) {
-                return leftOperand.compute() + rightOperand.compute();
-            }
-        };
+        return new Plus();
     }
 
     public static Operator minus() {
-        return new Operator("-") {
-            @Override
-            Integer compute(Node leftOperand, Node rightOperand) {
-                return leftOperand.compute() - rightOperand.compute();
-            }
-        };
+        return new Minus();
     }
 
     public static Operator multiply() {
-        return new Operator("*") {
-            @Override
-            Integer compute(Node leftOperand, Node rightOperand) {
-                return leftOperand.compute() * rightOperand.compute();
-            }
-        };
+        return new Multiply();
     }
 
     public String getSymbol() {
@@ -42,5 +27,38 @@ public abstract class Operator {
 
     public String display(Node leftOperand, Node rightOperand) {
         return leftOperand.display() + " " + symbol + " " + rightOperand.display();
+    }
+
+    private static class Plus extends Operator {
+        public Plus() {
+            super("+");
+        }
+
+        @Override
+        Integer compute(Node leftOperand, Node rightOperand) {
+            return leftOperand.compute() + rightOperand.compute();
+        }
+    }
+
+    private static class Minus extends Operator {
+        public Minus() {
+            super("-");
+        }
+
+        @Override
+        Integer compute(Node leftOperand, Node rightOperand) {
+            return leftOperand.compute() - rightOperand.compute();
+        }
+    }
+
+    private static class Multiply extends Operator {
+        public Multiply() {
+            super("*");
+        }
+
+        @Override
+        Integer compute(Node leftOperand, Node rightOperand) {
+            return leftOperand.compute() * rightOperand.compute();
+        }
     }
 }
