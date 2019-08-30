@@ -15,14 +15,14 @@ public class NodeTest {
 
     @Test
     public void display_OperatorNode_printsTheEquation() {
-        Node operatorNode = OpNode.createOpNode(plus(), OpNode.createValueNode(1), OpNode.createValueNode(2));
+        Node operatorNode = OpNode.createOpNode(Operator.plus(), OpNode.createValueNode(1), OpNode.createValueNode(2));
         assertEquals("1 + 2", operatorNode.display());
     }
 
     @Test
     public void display_complexOperatorNodes() {
-        Node f = OpNode.createOpNode(multiply(), OpNode.createValueNode(2), OpNode.createValueNode(5));
-        Node g = OpNode.createOpNode(plus(), f, OpNode.createValueNode(3));
+        Node f = OpNode.createOpNode(Operator.multiply(), OpNode.createValueNode(2), OpNode.createValueNode(5));
+        Node g = OpNode.createOpNode(Operator.plus(), f, OpNode.createValueNode(3));
 
         assertEquals("2 * 5 + 3", g.display());
     }
@@ -35,27 +35,16 @@ public class NodeTest {
 
     @Test
     public void compute_OperatorNode_givesTheComputedResult() {
-        Node opsNode = OpNode.createOpNode(minus(), OpNode.createValueNode(5), OpNode.createValueNode(3));
+        Node opsNode = OpNode.createOpNode(Operator.minus(), OpNode.createValueNode(5), OpNode.createValueNode(3));
         assertEquals(2, opsNode.compute().intValue());
     }
 
     @Test
     public void compute_complexOperatorNodes() {
-        Node f = OpNode.createOpNode(multiply(), OpNode.createValueNode(2), OpNode.createValueNode(5));
-        Node g = OpNode.createOpNode(plus(), f, OpNode.createValueNode(3));
+        Node f = OpNode.createOpNode(Operator.multiply(), OpNode.createValueNode(2), OpNode.createValueNode(5));
+        Node g = OpNode.createOpNode(Operator.plus(), f, OpNode.createValueNode(3));
 
         assertEquals(13, g.compute().intValue());
     }
 
-    public static Operator plus() {
-        return new Operator("+");
-    }
-
-    public static Operator minus() {
-        return new Operator("-");
-    }
-
-    public static Operator multiply() {
-        return new Operator("*");
-    }
 }
