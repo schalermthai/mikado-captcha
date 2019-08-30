@@ -1,6 +1,6 @@
 package com.thoughtworks.xconf.th.captcha;
 
-public class GodNode extends ValueNode implements Node {
+public class GodNode implements Node {
 
     private String operator;
 
@@ -8,7 +8,6 @@ public class GodNode extends ValueNode implements Node {
     private Node rightOperand;
 
     private GodNode(String operator, Node leftOperand, Node rightOperand) {
-        super(0);
         this.operator = operator;
         this.leftOperand = leftOperand;
         this.rightOperand = rightOperand;
