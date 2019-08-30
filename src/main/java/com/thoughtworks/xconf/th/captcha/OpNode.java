@@ -1,20 +1,20 @@
 package com.thoughtworks.xconf.th.captcha;
 
-public class GodNode implements Node {
+public class OpNode implements Node {
 
     private String operator;
 
     private Node leftOperand;
     private Node rightOperand;
 
-    private GodNode(String operator, Node leftOperand, Node rightOperand) {
+    private OpNode(String operator, Node leftOperand, Node rightOperand) {
         this.operator = operator;
         this.leftOperand = leftOperand;
         this.rightOperand = rightOperand;
     }
 
     public static Node createOpNode(String operator, Node leftOperand, Node rightOperand) {
-        return new GodNode(operator, leftOperand, rightOperand);
+        return new OpNode(operator, leftOperand, rightOperand);
     }
 
     public static Node createValueNode(Integer value) {
