@@ -3,11 +3,11 @@ package com.thoughtworks.xconf.th.captcha;
 public abstract class Operator {
     private final String symbol;
 
-    public Operator(String symbol) {
+    protected Operator(String symbol) {
         this.symbol = symbol;
     }
 
-    public String getSymbol() {
+    protected String getSymbol() {
         return symbol;
     }
 

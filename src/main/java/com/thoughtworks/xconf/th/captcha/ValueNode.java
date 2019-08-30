@@ -1,7 +1,7 @@
 package com.thoughtworks.xconf.th.captcha;
 
 public class ValueNode implements Node {
-    protected Integer value = 0;
+    protected Integer value;
 
     public ValueNode(Integer value) {
         this.value = value;
